@@ -1,26 +1,26 @@
+//  Options
+const drinkTypes = ['hot', 'cold', 'blended'];
+const sizes = ['S', 'M', 'L'];
+const creams = ['withCream', 'withoutCream'];
+
+const sizeMarkups = {
+  S: 0,
+  M: 0.5,
+  L: 1,
+};
+
+const drinkTypeMarkups = {
+  hot: 0,
+  cold: 0,
+  blended: 1,
+};
+
+const creamMarkups = {
+  withCream: 0.5,
+  withoutCream: 0,
+};
+
 function calculatePrice1(drinkType, size, whippedCream) {
-  //  Options
-  const drinkTypes = ['hot', 'cold', 'blended'];
-  const sizes = ['S', 'M', 'L'];
-  const creams = ['withCream', 'withoutCream'];
-
-  const sizeMarkups = {
-    S: 0,
-    M: 0.5,
-    L: 1,
-  };
-
-  const drinkTypeMarkups = {
-    hot: 0,
-    cold: 0,
-    blended: 1,
-  };
-
-  const creamMarkups = {
-    withCream: 0.5,
-    withoutCream: 0,
-  };
-
   // Exceptions
   if (size === 'L' && drinkType === 'hot') {
     alert('Large size is only available for cold and blended drinks.');
