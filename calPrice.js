@@ -1,7 +1,7 @@
 //  Options
-const drinkTypes = ['hot', 'cold', 'blended'];
+const drinkTypes = ['Hot', 'Cold', 'Blended'];
 const sizes = ['S', 'M', 'L'];
-const creams = ['withCream', 'withoutCream'];
+const creams = ['WithCream', 'WithoutCream'];
 
 const sizeMarkups = {
   S: 0,
@@ -10,19 +10,19 @@ const sizeMarkups = {
 };
 
 const drinkTypeMarkups = {
-  hot: 0,
-  cold: 0,
-  blended: 1,
+  Hot: 0,
+  Cold: 0,
+  Blended: 1,
 };
 
 const creamMarkups = {
-  withCream: 0.5,
-  withoutCream: 0,
+  WithCream: 0.5,
+  WithoutCream: 0,
 };
 
 function calculatePrice1(drinkType, size, whippedCream) {
   // Exceptions
-  if (size === 'L' && drinkType === 'hot') {
+  if (size === 'L' && drinkType === 'Hot') {
     alert('Large size is only available for cold and blended drinks.');
   }
 
@@ -42,4 +42,18 @@ function calculatePrice1(drinkType, size, whippedCream) {
   price += drinkTypeMarkups[drinkType];
 
   return price;
+}
+
+function calculatePrice2() {
+  sizes.push('XL');
+  sizeMarkups.XL = 1.5;
+
+  drinkTypes.push('MilkTea');
+  drinkTypeMarkups.MilkTea = 0.25;
+
+  var milk = ['Whole', 'Almond'];
+  var milkMarkups = {
+    Whole: 0,
+    Almond: 0.5,
+  };
 }
