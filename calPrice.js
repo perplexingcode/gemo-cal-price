@@ -1,63 +1,63 @@
+const orderItem = {
+  drinkType: '',
+  size: '',
+  cream: '',
+  pumps: '',
+  breakFast: '',
+  foodOption: '',
+};
+
+// Final price = base price + markups + tax
 const finalPrice = '';
 
 //  Options
-const drinkTypes = ['Hot', 'Cold', 'Blended'];
-const sizes = ['S', 'M', 'L'];
-const creams = ['WithCream', 'WithoutCream'];
-
-const sizeMarkups = {
+const drinkPrices = {
+  Hot: 2,
+  Cold: 2,
+  Blended: 3,
+};
+const sizePrices = {
   S: 0,
   M: 0.5,
   L: 1,
 };
+const creams = ['WithCream', 'WithoutCream'];
 
-const drinkTypeMarkups = {
-  Hot: 0,
-  Cold: 0,
-  Blended: 1,
-};
-
-const creamMarkups = {
+const creamPrices = {
   WithCream: 0.5,
   WithoutCream: 0,
 };
 
-function calculatePrice1(drinkType, size, whippedCream) {
+function calculatePrice1(item, add) {
+  const { drinkType, size, whippedCream } = item;
   // Exceptions
+  if (Object.keys(drinkTypes).indexOf(drinkType) === -1) return;
+
   if (size === 'L' && drinkType === 'Hot') {
     alert('Large size is only available for cold and blended drinks.');
+    process.exit();
   }
 
-  if (
-    drinkTypes.indexOf(drinkType) === -1 ||
-    sizes.indexOf(size) === -1 ||
-    creams.indexOf(whippedCream) === -1
-  ) {
-    alert('Invalid input, please double check your order.');
-  }
+  price = drinkPrices[drinkType];
+  price += sizePrices[size];
+  price += creamPrices[whippedCream];
 
-  // Price calculation
-  let price = 2; // base price
-
-  price += sizeMarkups[size];
-  price += creamMarkups[whippedCream];
-  price += drinkTypeMarkups[drinkType];
-
-  return price;
+  return price + add || 0;
 }
 
-function calculatePrice2() {
-  sizes.push('XL');
-  sizeMarkups.XL = 1.5;
+function calculatePrice2(item) {
+  sizePrices.XL = 1.5;
+  drinkPrices.MilkTea = 2.25;
 
-  drinkTypes.push('MilkTea');
-  drinkTypeMarkups.MilkTea = 0.25;
-
-  var milk = ['Whole', 'Almond'];
-  var milkMarkups = {
+  var milkPrices = {
     Whole: 0,
     Almond: 0.5,
   };
+
+  add += milkPrices[item.milk];
+
+  let price = calculatePrice1(item, add);
+  return price;
 }
 
 function calculatePrice3(drinkType, pumps) {
@@ -70,4 +70,28 @@ function calculatePrice3(drinkType, pumps) {
   if (drinkType === 'Hot' && pumps > 2) {
     finalPrice += 0.5 * (pumps - 2);
   }
+}
+
+function calculatePrice4() {
+  var breakFasts = ['Sandwich', 'Bagel'];
+  basePrices.Sandwich = 3;
+  basePrices.Bagel = 3;
+
+  var foodOptions = ['Egg', 'Turkey', 'Butter', 'CreamCheese'];
+  var foodOptionsMarkups = {
+    Egg: 1,
+    Turkey: 1,
+    Butter: 0.5,
+    CreamCheese: 0.5,
+  };
+}
+
+function calculatePrice5(orderItems) {
+  let invoice = '';
+  for (let item of orderItems) {
+  }
+  return {
+    invoice,
+    price,
+  };
 }
