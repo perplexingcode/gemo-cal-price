@@ -1,3 +1,5 @@
+const finalPrice = '';
+
 //  Options
 const drinkTypes = ['Hot', 'Cold', 'Blended'];
 const sizes = ['S', 'M', 'L'];
@@ -56,4 +58,16 @@ function calculatePrice2() {
     Whole: 0,
     Almond: 0.5,
   };
+}
+
+function calculatePrice3(drinkType, pumps) {
+  if (pumps > 6) {
+    alert('Maximum 6 pumps of chocolate sauce.');
+  }
+  if (pumps < 0) {
+    alert('Pumps cannot be negative.');
+  }
+  if (drinkType === 'Hot' && pumps > 2) {
+    finalPrice += 0.5 * (pumps - 2);
+  }
 }
